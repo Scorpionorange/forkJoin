@@ -38,7 +38,7 @@ class Counter extends RecursiveTask<Integer>{
     private int to;
     private Filter filter;
 
-    private Counter(double[] values, int from, int to, Filter filter){
+    public Counter(double[] values, int from, int to, Filter filter){
         this.values = values;
         this.from = from;
         this.to = to;
