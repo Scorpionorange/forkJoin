@@ -13,6 +13,7 @@ public class forkJoinTest {
         }
         Counter counter = new Counter(numbers, 0, numbers.length, (double t) -> (t > 0.5));
         /*
+        * non-Lambda mode
         * new Filter() {
         *     @Override
         *     public boolean accept(double x) {
@@ -27,17 +28,17 @@ public class forkJoinTest {
 }
 
 interface Filter{
-    boolean accept(double t);
+    boolean accept(double x);
 }
 
 class Counter extends RecursiveTask<Integer>{
-    public static final int THRESHOLD = 1000;
+    private static final int THRESHOLD = 1000;
     private double[] values;
     private int from;
     private int to;
     private Filter filter;
 
-    public Counter(double[] values, int from, int to, Filter filter){
+    private Counter(double[] values, int from, int to, Filter filter){
         this.values = values;
         this.from = from;
         this.to = to;
